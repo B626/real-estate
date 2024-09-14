@@ -86,7 +86,7 @@ const Hero = () => {
       }
     >
       <div className="sm:max-w-[320px] sm2:max-w-[100%] sm:p-[0_15px] m-[0_auto] relative z-[2] l:max-w-[980px] l:max-w-[980px] xl:max-w-[1180px] xxl:max-w-[1380px]">
-        <h1 className="sm:text-[40px] md:text-[60px] sm:text-center font-[500] sm:leading-[130%] text-[#fff] sm:mb-[40px] l:flex l:flex-col l:text-[80px] xl:text-[90px] xxl:text-[110px]">
+        <h1 className="sm:text-[40px] md:text-[60px] sm:text-center font-[500] sm:leading-[130%] text-[#fff] sm:mb-[40px] l:flex l:flex-col l:text-[80px] xxl:text-[80px] xxxl:text-[110px]">
           <span className="l:flex l:self-start">Real estate </span>
           <span className="l:flex l:self-center">provides peace </span>
           <span className="l:flex l:self-end">for everyone</span>

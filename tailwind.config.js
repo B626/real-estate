@@ -11,7 +11,8 @@ export default {
       md2: "768px",
       l: "992px",
       xl: "1200px",
-      xxl: "1400px"
+      xxl: "1400px",
+      xxxl: "1500px",
     },
   },
   plugins: [],
