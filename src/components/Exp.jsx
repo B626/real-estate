@@ -31,7 +31,7 @@ const Exp = () => {
               to="/"
               className="bg-[#FFE500] sm:gap-[10px]
              sm:text-[16px] uppercase font-[900] p-[10px_30px] sm:rounded-[20px]
-             sm:self-center text-center hidden l:flex l:self-center"
+             sm:self-center text-center hidden l:flex l:self-center button"
             >
               Get started
             </Link>
@@ -72,7 +72,7 @@ const Exp = () => {
           to="/"
           className="bg-[#FFE500] sm:flex sm:gap-[10px]
              sm:text-[16px] uppercase font-[900] p-[10px_30px] sm:rounded-[20px]
-             sm:self-center text-center l:hidden"
+             sm:self-center text-center l:hidden button"
         >
           Get started
         </Link>

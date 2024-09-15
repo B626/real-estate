@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Contact = () => {
   return (
-    <footer className="p-[40px_0_40px]">
+    <footer className="p-[40px_0_40px]" name="footer">
       <div className="sm:max-w-[320px] sm2:max-w-[100%] sm:p-[0_15px] m-[0_auto] w-[100%] sm:flex flex-col l:max-w-[980px] l:flex-row l:items-center xl:max-w-[1180px] xxl:max-w-[1380px]">
         <div className="[flex:1]">
           <h2 className="sm:text-[35px] font-[900] uppercase text-[#fff] sm:text-center sm:mb-[42px]">
@@ -46,7 +46,7 @@ const Contact = () => {
               to="/"
               className="bg-[#FFE500] sm:flex sm:gap-[10px]
              sm:text-[16px] uppercase font-[900] p-[10px_30px] sm:rounded-[20px]
-             sm:self-center text-center mb-[40px] l:hidden"
+             sm:self-center text-center mb-[40px] l:hidden button"
             >
               Contact Form
             </Link>
@@ -87,7 +87,7 @@ const Contact = () => {
               to="/"
               className="bg-[#FFE500] sm:flex sm:gap-[10px]
              sm:text-[16px] uppercase font-[900] p-[10px_30px] sm:rounded-[20px]
-             sm:self-center l:visible"
+             sm:self-center l:visible button"
             >
               Send
             </Link>

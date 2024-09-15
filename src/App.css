@@ -12,8 +12,49 @@ body, #root {
 
 .hoverImg{
   transition: .5s ease;
+  transform: scale(1.01);
 }
 
 .hoverImg:hover{
   transform: scale(1.15);
+}
+
+.button{
+  transition: .2s ease;
+  border: 1px solid transparent;
+  align-items: center;
+}
+
+.button:hover {
+  background-color: transparent;
+  border: 1px solid #FFE500;
+  color: #FFE500;
+}
+
+.button:hover .pathRight{
+  stroke: #FFE500;
+}
+
+.button:hover .lineRight{
+  stroke: #FFE500;
+}
+
+.navLink{
+  position: relative;
+  transition: .2s ease;
+}
+
+.navLink::after{
+  content: "";
+  width: 0%;
+  height: 2px;
+  background-color: #FFE500;
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  transition: .2s ease;
+}
+
+.navLink:hover.navLink::after{
+  width: 100%;
 }

@@ -63,10 +63,33 @@ const Best = () => {
             to="/"
             className="bg-[#FFE500] sm:flex sm:gap-[10px]
              sm:text-[16px] uppercase font-[900] p-[10px_30px] sm:rounded-[20px]
-             sm:self-center l:mt-[-40px]"
+             sm:self-center l:mt-[-40px] button"
           >
             View properties
-            <img src={arrowRight} alt="->" />
+            {/* <img src={arrowRight} alt="->" /> */}
+            <svg
+              width="19"
+              height="17"
+              viewBox="0 0 19 17"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10.5 1.5L17.5 8.5L10.5 15.5"
+                stroke="#373A36"
+                strokeWidth="2"
+                className="pathRight"
+              />
+              <line
+                x1="0.5"
+                y1="8.5"
+                x2="17.5"
+                y2="8.5"
+                stroke="#373A36"
+                strokeWidth="2"
+                className="lineRight"
+              />
+            </svg>
           </Link>
         </div>
       </div>

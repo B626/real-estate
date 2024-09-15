@@ -20,7 +20,7 @@ const Houses = () => {
               to="/"
               className="bg-[#FFE500] sm:flex sm:gap-[10px]
              sm:text-[16px] uppercase font-[900] p-[10px_30px] sm:rounded-[20px]
-             sm:self-start l:visible"
+             sm:self-start l:visible button"
             >
               Check them out
             </Link>
