@@ -1,21 +1,54 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import "../App.css";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 import burger from "/assets/img/icons/burger.svg";
 import close from "/assets/img/icons/close.svg";
 
+import {
+  Link,
+  Button,
+  Element,
+  Events,
+  animateScroll as scroll,
+  scrollSpy,
+} from "react-scroll";
+
 
 const Header = () => {
-  const body = document.querySelector("body")
-  const burgerRef = useRef(null)
-  const burgerButtonRef = useRef(null)
-  const burgerCloseButtonRef = useRef(null)
+  const body = document.querySelector("body");
+  const burgerRef = useRef(null);
+  const burgerButtonRef = useRef(null);
+  const burgerCloseButtonRef = useRef(null);
+
+  useEffect(() => {
+    // Registering the 'begin' event and logging it to the console when triggered.
+    Events.scrollEvent.register("begin", (to, element) => {
+      console.log("begin", to, element);
+    });
+
+    // Registering the 'end' event and logging it to the console when triggered.
+    Events.scrollEvent.register("end", (to, element) => {
+      console.log("end", to, element);
+    });
+
+    // Updating scrollSpy when the component mounts.
+    scrollSpy.update();
+
+    // Returning a cleanup function to remove the registered events when the component unmounts.
+    return () => {
+      Events.scrollEvent.remove("begin");
+      Events.scrollEvent.remove("end");
+    };
+  }, []);
+  // Function to handle the activation of a link.
+
+    const handleScrollDown = () => {};
 
   const handleBurgerClick = () => {
-    burgerRef.current.style.right = "0%"
-    body.style.overflow = "hidden"
-  }
+    burgerRef.current.style.right = "0%";
+    // body.style.overflow = "hidden";
+  };
 
   const handleBurgerCloseClick = () => {
     burgerRef.current.style.right = "120%";
@@ -36,8 +69,11 @@ const Header = () => {
         <ul className="flex flex-col gap-[35px]">
           <li>
             <Link
-              to="/"
+              to="home"
               className="text-[#fff] text-[24px] navLink"
+              onSetActive={() => handleScrollDown()}
+              smooth={true}
+              duration={500}
               onClick={() => handleBurgerNavClick()}
             >
               Home
@@ -45,35 +81,47 @@ const Header = () => {
           </li>
           <li>
             <Link
-              to="/"
+              to="properties"
               className="text-[#fff] text-[24px] navLink"
+              onSetActive={() => handleScrollDown()}
+              smooth={true}
+              duration={500}
               onClick={() => handleBurgerNavClick()}
             >
-              About us
+              Properties
             </Link>
           </li>
           <li>
             <Link
-              to="/"
+              to="experience"
               className="text-[#fff] text-[24px] navLink"
+              onSetActive={() => handleScrollDown()}
+              smooth={true}
+              duration={500}
               onClick={() => handleBurgerNavClick()}
             >
-              Sustainability
+              Why us
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link
-              to="/"
+              to="houses"
               className="text-[#fff] text-[24px] navLink"
+              onSetActive={() => handleScrollDown()}
+              smooth={true}
+              duration={500}
               onClick={() => handleBurgerNavClick()}
             >
-              Products
+              Houses
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link
-              to="/"
+              to="footer"
               className="text-[#fff] text-[24px] navLink"
+              onSetActive={() => handleScrollDown()}
+              smooth={true}
+              duration={500}
               onClick={() => handleBurgerNavClick()}
             >
               Contacts
@@ -96,27 +144,57 @@ const Header = () => {
           <nav>
             <ul className="flex sm:hidden l:flex l:gap-[35px]">
               <li>
-                <Link to="/" className="text-[#fff] text-[18px] navLink relative">
+                <Link
+                  to="home"
+                  className="text-[#fff] text-[18px] navLink relative cursor-pointer"
+                  onSetActive={() => handleScrollDown()}
+                  smooth={true}
+                  duration={500}
+                >
                   Home
                 </Link>
               </li>
               <li>
-                <Link to="/" className="text-[#fff] text-[18px] navLink relative">
-                  About us
+                <Link
+                  to="properties"
+                  className="text-[#fff] text-[18px] navLink relative cursor-pointer"
+                  onSetActive={() => handleScrollDown()}
+                  smooth={true}
+                  duration={500}
+                >
+                  Properties
                 </Link>
               </li>
               <li>
-                <Link to="/" className="text-[#fff] text-[18px] navLink relative">
-                  Sustainability
+                <Link
+                  to="experience"
+                  className="text-[#fff] text-[18px] navLink relative cursor-pointer"
+                  onSetActive={() => handleScrollDown()}
+                  smooth={true}
+                  duration={500}
+                >
+                  Why us
                 </Link>
               </li>
               <li>
-                <Link to="/" className="text-[#fff] text-[18px] navLink relative">
-                  Products
+                <Link
+                  to="houses"
+                  className="text-[#fff] text-[18px] navLink relative cursor-pointer"
+                  onSetActive={() => handleScrollDown()}
+                  smooth={true}
+                  duration={500}
+                >
+                  Houses
                 </Link>
               </li>
               <li>
-                <Link to="/" className="text-[#fff] text-[18px] navLink relative">
+                <Link
+                  to="footer"
+                  className="text-[#fff] text-[18px] navLink relative cursor-pointer"
+                  onSetActive={() => handleScrollDown()}
+                  smooth={true}
+                  duration={500}
+                >
                   Contacts
                 </Link>
               </li>

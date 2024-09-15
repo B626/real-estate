@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const Exp = () => {
   return (
-    <section className="p-[20px_0_40px]">
+    <section className="p-[20px_0_40px]" name="experience">
       <div className="sm:max-w-[320px] sm2:max-w-[100%] sm:p-[0_15px] m-[0_auto] sm:flex flex-col l:flex-row-reverse l:gap-[20px] l:max-w-[980px] xl:max-w-[1180px] xxl:max-w-[1380px]">
         <h2 className="text-[#fff] sm:text-[25px] sm:leading-[110%] uppercase font-[900] sm:mb-[20px] l:hidden">
           We provide better experience

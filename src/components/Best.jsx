@@ -9,7 +9,7 @@ import i3 from "/assets/img/best-3.jpg";
 
 const Best = () => {
   return (
-    <section className="p-[40px_0_60px]">
+    <section className="p-[40px_0_60px]" name="properties">
       <div className="sm:max-w-[320px] sm2:max-w-[100%] sm:p-[0_15px] m-[0_auto] l:max-w-[980px] xl:max-w-[1180px] xxl:max-w-[1380px]">
         <div className="flex gap-[10px] items-end sm:mb-[35px] l:mb-[0px] l:relative l:h-[100%] l:w-[100%]">
           <h2 className="text-[#fff] sm:text-[25px] md:text-[30px] md2:text-[35px] sm:leading-[110%] l:absolute l:top-[0px] l:left-[0px] l:w-[100%] l:h-[100%]">

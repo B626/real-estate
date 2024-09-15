@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 
 const Houses = () => {
   return (
-    <section className="sm:hidden l:block p-[60px_0_80px]">
+    <section className="sm:hidden l:block p-[60px_0_80px]" name="houses">
       <div className="sm:max-w-[320px] sm2:max-w-[100%] sm:p-[0_15px] m-[0_auto] relative z-[2] l:max-w-[980px] xl:max-w-[1180px] xxl:max-w-[1380px]">
         <div className="flex justify-between mb-[85px]">
           <div className="flex flex-col gap-[40px]">
@@ -48,7 +48,7 @@ const Houses = () => {
             </div>
             <p className="text-[#fff] text-[15px] font-[500] text-center">
               This is one of the best works of ours so far. This beautiful villa
-              was made 3 years ago and sold immediatly
+              was made 3 years ago and sold immediatly 
             </p>
             <Link
               to="/"
