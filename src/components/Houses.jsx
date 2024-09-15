@@ -37,27 +37,27 @@ const Houses = () => {
             </p>
             <Link
               to="/"
-              className="text-center text-[15px] text-[#FFE500] font-[500]"
+              className="text-center text-[15px] text-[#FFE500] font-[500] navLink flex self-center"
             >
               Read more
             </Link>
           </div>
-          <div className="flex [flex:2] flex-col gap-[15px] [overflow:hidden]">
+          <div className="flex [flex:2] flex-col gap-[15px]">
             <div className="[overflow:hidden] rounded-[30px]">
               <img src={card2} className="hoverImg w-[100%]" alt="" />
             </div>
             <p className="text-[#fff] text-[15px] font-[500] text-center">
               This is one of the best works of ours so far. This beautiful villa
-              was made 3 years ago and sold immediatly 
+              was made 3 years ago and sold immediatly
             </p>
             <Link
               to="/"
-              className="text-center text-[15px] text-[#FFE500] font-[500]"
+              className="text-center text-[15px] text-[#FFE500] font-[500] navLink flex self-center"
             >
               Read more
             </Link>
           </div>
-          <div className="flex [flex:1] self-start flex-col gap-[15px] [overflow:hidden]">
+          <div className="flex [flex:1] self-start flex-col gap-[15px]">
             <div className="[overflow:hidden] rounded-[30px]">
               <img src={card3} className="hoverImg w-[100%]" alt="" />
             </div>
@@ -66,7 +66,7 @@ const Houses = () => {
             </p>
             <Link
               to="/"
-              className="text-center text-[15px] text-[#FFE500] font-[500]"
+              className="text-center text-[15px] text-[#FFE500] font-[500] navLink flex self-center"
             >
               Read more
             </Link>
