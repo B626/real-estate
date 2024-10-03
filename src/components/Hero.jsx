@@ -1,19 +1,37 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import "../App.css";
-import arrow from "/assets/img/icons/arrow-up-right.svg";
-import arrowDown from "/assets/img/icons/arrow-down.svg";
-import bg from "/assets/img/hero-bg.jpg";
-// import { Link } from "react-router-dom";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   Link,
-  Button,
-  Element,
   Events,
   animateScroll as scroll,
   scrollSpy,
 } from "react-scroll";
+import SplitType from "../libs/split-type";
+
+import arrow from "/assets/img/icons/arrow-up-right.svg";
+import arrowDown from "/assets/img/icons/arrow-down.svg";
+import bg from "/assets/img/hero-bg.jpg";
+
+
+gsap.registerPlugin(ScrollTrigger)
+
 
 const Hero = () => {
+  const firstTitle = useRef()
+  const secondTitle = useRef();
+  const thirdTitle = useRef();
+  const cards = useRef()
+  const introSection = useRef()
+  const background = useRef()
+  const secTitle = useRef()
+  const secSub = useRef()
+
+  const text = SplitType.create("#secTitle");
+    console.log(text.chars)
+
   useEffect(() => {
     // Registering the 'begin' event and logging it to the console when triggered.
     Events.scrollEvent.register("begin", (to, element) => {
@@ -34,22 +52,42 @@ const Hero = () => {
       Events.scrollEvent.remove("end");
     };
   }, []);
-  // Function to handle the activation of a link.
+  
 
   const handleScrollDown = () => {};
+
+  useGSAP(() => {
+    gsap.from(firstTitle.current, {x: 1500})
+    gsap.from(secondTitle.current, { x: 1500, delay: 0.5 });
+    gsap.from(thirdTitle.current, { x: 1500, delay: 1 });
+    gsap.from(cards.current, {opacity: 0, delay: 1.5});
+    gsap.fromTo(background.current, {opacity: 0}, {opacity: 1, delay: 2})
+  })
+
   return (
     <section
+      ref={introSection}
       className={
-        "bg-no-repeat bg-center bg-cover sm:pt-[125px] l:pt-[160px] relative"
-      } name="home"
+        "bg-no-repeat bg-center bg-cover sm:pt-[125px] l:pt-[160px] relative overflow-hidden"
+      }
+      name="home"
     >
       <div className="sm:max-w-[320px] sm2:max-w-[100%] sm:p-[0_15px] m-[0_auto] relative z-[2] l:max-w-[980px] l:max-w-[980px] xl:max-w-[1180px] xxl:max-w-[1380px]">
         <h1 className="sm:text-[40px] md:text-[60px] sm:text-center font-[500] sm:leading-[130%] text-[#fff] sm:mb-[40px] l:flex l:flex-col l:text-[80px] xxl:text-[80px] xxxl:text-[110px]">
-          <span className="l:flex l:self-start">Real estate </span>
-          <span className="l:flex l:self-center">provides peace </span>
-          <span className="l:flex l:self-end">for everyone</span>
+          <span ref={firstTitle} className="l:flex l:self-start">
+            Real estate{" "}
+          </span>
+          <span ref={secondTitle} className="l:flex l:self-center">
+            provides peace{" "}
+          </span>
+          <span ref={thirdTitle} className="l:flex l:self-end">
+            for everyone
+          </span>
         </h1>
-        <div className="l:flex l:justify-betwee l:gap-[64px] l:items-end">
+        <div
+          ref={cards}
+          className="l:flex l:justify-betwee l:gap-[64px] l:items-end"
+        >
           <div className="grid sm:grid-rows-3 sm:grid-cols-2 l:grid-rows-2 l:grid-cols-3 sm:gap-x-[9px] sm:gap-y-[22px] sm:mb-[28px] l:[flex:1_0_630px] l:mb-[0px]">
             <div className="sm:p-[12px] sm:border-[#ffffff32] border-[1px] bg-[#ffffff21] [backdrop-filter:blur(13px)] sm:flex sm:flex-col sm:gap-[2px] l:w-[100%]">
               <h3 className="text-[#fff] sm:text-[30px] md:text-[35px] font-[500] sm:leading-[100%]">
@@ -111,7 +149,7 @@ const Hero = () => {
           <div className="xl:flex xl:gap-[64px]">
             <hr className="hidden xl:block text-[#fff] bg-[#fff] h-[120px] w-[2px]" />
             <div className="sm:flex sm:gap-[7px] sm:flex-col l:max-w-[590px]">
-              <h2 className="text-[#FFE500] sm:text-[20px] sm:font-[500]">
+              <h2 className="text-[#FFE500] sm:text-[20px] sm:font-[500] secTitle" id="secTitle">
                 We put in work
               </h2>
               <p className="text-[13px] sm3:text-[16px] text-[#F0F0F0]">
@@ -136,6 +174,7 @@ const Hero = () => {
       </div>
       <img
         src={bg}
+        ref={background}
         className="absolute [object-fit:cover] [object-position:center] left-[0] top-[0] w-[100%] h-[100%] z-[1]"
         alt=""
       />

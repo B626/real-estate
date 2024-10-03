@@ -1,15 +1,52 @@
-import React from "react";
+import React, { useRef } from "react";
 import "../App.css";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Link } from "react-router-dom";
+
 import arrow from "/assets/img/icons/arrow-up-right-bold.svg";
-import arrowRight from "/assets/img/icons/arrow-right.svg";
 import i1 from "/assets/img/best-1.jpg";
 import i2 from "/assets/img/best-2.jpg";
 import i3 from "/assets/img/best-3.jpg";
 
+gsap.registerPlugin(ScrollTrigger);
+
 const Best = () => {
+  const section = useRef();
+  const firstCard = useRef();
+  const secondCard = useRef();
+  const thirdCard = useRef();
+
+  useGSAP(() => {
+    gsap.from(firstCard.current, {
+      y: 300,
+      opacity: 0,
+      duration: 0.8,
+      scrollTrigger: {
+        trigger: firstCard.current
+      },
+    });
+    gsap.from(secondCard.current, {
+      y: 200,
+      opacity: 0,
+      duration: 0.8,
+      scrollTrigger: {
+        trigger: secondCard.current,
+      },
+    });
+    gsap.from(thirdCard.current, {
+      y: 300,
+      opacity: 0,
+      duration: 0.8,
+      scrollTrigger: {
+        trigger: thirdCard.current,
+      },
+    });
+  });
+
   return (
-    <section className="p-[40px_0_60px]" name="properties">
+    <section ref={section} className="p-[40px_0_60px]" name="properties">
       <div className="sm:max-w-[320px] sm2:max-w-[100%] sm:p-[0_15px] m-[0_auto] l:max-w-[980px] xl:max-w-[1180px] xxl:max-w-[1380px]">
         <div className="flex gap-[10px] items-end sm:mb-[35px] l:mb-[0px] l:relative l:h-[100%] l:w-[100%]">
           <h2 className="text-[#fff] sm:text-[25px] md:text-[30px] md2:text-[35px] sm:leading-[110%] l:absolute l:top-[0px] l:left-[0px] l:w-[100%] l:h-[100%]">
@@ -22,7 +59,7 @@ const Best = () => {
         </div>
         <div className="relative sm:flex sm:flex-col sm:gap-[60px] l:gap-[0px]">
           <div className="sm:flex sm:flex-col sm:gap-[30px] md:flex-row md:gap-[10px] l:h-[553px] xl:justify-between">
-            <div className="relative l:flex l:self-end">
+            <div className="relative l:flex l:self-end" ref={firstCard}>
               <div className="relative md:h-[100%] l:h-[auto] [overflow:hidden] rounded-[30px]">
                 <img
                   src={i1}
@@ -34,7 +71,10 @@ const Best = () => {
                 </p>
               </div>
             </div>
-            <div className="relative l:flex l:self-center xxl:pb-[40px]">
+            <div
+              className="relative l:flex l:self-center xxl:pb-[40px]"
+              ref={secondCard}
+            >
               <div className="relative md:h-[100%] l:h-[auto] [overflow:hidden] rounded-[30px]">
                 <img
                   src={i2}
@@ -46,7 +86,7 @@ const Best = () => {
                 </p>
               </div>
             </div>
-            <div className="relative l:flex l:self-end">
+            <div className="relative l:flex l:self-end" ref={thirdCard}>
               <div className="relative md:h-[100%] l:h-[auto] [overflow:hidden] rounded-[30px]">
                 <img
                   src={i3}

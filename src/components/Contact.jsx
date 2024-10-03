@@ -21,7 +21,7 @@ const Contact = () => {
                 <h4 className="text-[25px] text-[#fff] text-center font-[900] sm:leading-[100%] l:text-[20px]">
                   E-MAIL
                 </h4>
-                <p className="text-[16px] text-center text-[#FFE500]">
+                <p className="text-[16px] text-center text-[#FFE500] cursor-pointer">
                   realestatereal@gmail.com
                 </p>
               </li>
@@ -29,7 +29,7 @@ const Contact = () => {
                 <h4 className="text-[25px] text-[#fff] text-center font-[900] sm:leading-[100%] l:text-[20px]">
                   Phone number
                 </h4>
-                <p className="text-[16px] text-center text-[#FFE500]">
+                <p className="text-[16px] text-center text-[#FFE500] cursor-pointer">
                   +380949741258
                 </p>
               </li>
@@ -37,7 +37,7 @@ const Contact = () => {
                 <h4 className="text-[25px] text-[#fff] text-center font-[900] sm:leading-[100%] l:text-[20px]">
                   Address
                 </h4>
-                <p className="text-[16px] text-center text-[#FFE500]">
+                <p className="text-[16px] text-center text-[#FFE500] cursor-pointer">
                   Maydan Nezalezhnosti 48
                 </p>
               </li>

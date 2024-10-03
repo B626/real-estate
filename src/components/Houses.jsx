@@ -1,17 +1,51 @@
-import React from 'react'
+import React, { useRef } from "react";
 import "../App.css";
+import { Link } from "react-router-dom";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 import house from "/assets/img/houses-1.png";
 import card1 from "/assets/img/houses-2.png";
 import card2 from "/assets/img/houses-3.png";
 import card3 from "/assets/img/houses-4.png";
 
-import { Link } from 'react-router-dom';
+gsap.registerPlugin(ScrollTrigger);
 
 const Houses = () => {
+  const firstColumn = useRef();
+  const secondColumn = useRef();
+  const thirdColumn = useRef();
+  useGSAP(() => {
+    gsap.from(firstColumn.current, {
+      y: 300,
+      opacity: 0,
+      duration: 0.8,
+      scrollTrigger: {
+        trigger: firstColumn.current,
+      },
+    });
+    gsap.from(secondColumn.current, {
+      y: 200,
+      opacity: 0,
+      duration: 0.8,
+      scrollTrigger: {
+        trigger: firstColumn.current,
+      },
+    });
+    gsap.from(thirdColumn.current, {
+      y: 300,
+      opacity: 0,
+      duration: 0.8,
+      scrollTrigger: {
+        trigger: firstColumn.current,
+      },
+    });
+  });
   return (
     <section className="sm:hidden l:block p-[60px_0_80px]" name="houses">
       <div className="sm:max-w-[320px] sm2:max-w-[100%] sm:p-[0_15px] m-[0_auto] relative z-[2] l:max-w-[980px] xl:max-w-[1180px] xxl:max-w-[1380px]">
-        <div className="flex justify-between mb-[85px]">
+        {/* <div className="flex justify-between mb-[85px]">
           <div className="flex flex-col gap-[40px]">
             <h2 className="text-[46px] text-[#fff] font-[900] uppercase leading-[100%]">
               Look at these beautiful houses
@@ -26,9 +60,12 @@ const Houses = () => {
             </Link>
           </div>
           <img src={house} alt="" />
-        </div>
+        </div> */}
         <div className="flex justify-between gap-[35px]">
-          <div className="flex [flex:1] self-start flex-col gap-[15px]">
+          <div
+            className="flex [flex:1] self-start flex-col gap-[15px]"
+            ref={firstColumn}
+          >
             <div className="[overflow:hidden] rounded-[30px]">
               <img src={card1} className="hoverImg w-[100%]" alt="" />
             </div>
@@ -42,7 +79,7 @@ const Houses = () => {
               Read more
             </Link>
           </div>
-          <div className="flex [flex:2] flex-col gap-[15px]">
+          <div className="flex [flex:2] flex-col gap-[15px]" ref={secondColumn}>
             <div className="[overflow:hidden] rounded-[30px]">
               <img src={card2} className="hoverImg w-[100%]" alt="" />
             </div>
@@ -57,7 +94,10 @@ const Houses = () => {
               Read more
             </Link>
           </div>
-          <div className="flex [flex:1] self-start flex-col gap-[15px]">
+          <div
+            className="flex [flex:1] self-start flex-col gap-[15px]"
+            ref={thirdColumn}
+          >
             <div className="[overflow:hidden] rounded-[30px]">
               <img src={card3} className="hoverImg w-[100%]" alt="" />
             </div>
@@ -75,6 +115,6 @@ const Houses = () => {
       </div>
     </section>
   );
-}
+};
 
-export default Houses
+export default Houses;
