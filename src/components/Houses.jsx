@@ -5,7 +5,6 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import house from "/assets/img/houses-1.png";
 import card1 from "/assets/img/houses-2.png";
 import card2 from "/assets/img/houses-3.png";
 import card3 from "/assets/img/houses-4.png";
@@ -16,32 +15,25 @@ const Houses = () => {
   const firstColumn = useRef();
   const secondColumn = useRef();
   const thirdColumn = useRef();
+
   useGSAP(() => {
-    gsap.from(firstColumn.current, {
-      y: 300,
-      opacity: 0,
-      duration: 0.8,
-      scrollTrigger: {
-        trigger: firstColumn.current,
-      },
-    });
-    gsap.from(secondColumn.current, {
-      y: 200,
-      opacity: 0,
-      duration: 0.8,
-      scrollTrigger: {
-        trigger: firstColumn.current,
-      },
-    });
-    gsap.from(thirdColumn.current, {
-      y: 300,
-      opacity: 0,
-      duration: 0.8,
-      scrollTrigger: {
-        trigger: firstColumn.current,
-      },
+    let mm = gsap.matchMedia();
+
+    mm.add("(min-width:992px)", () => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: firstColumn.current,
+          start: "top 100%",
+          end: "bottom +=1000",
+          scrub: 1,
+        },
+      });
+      tl.from(firstColumn.current, { y: 300, opacity: 0 });
+      tl.from(secondColumn.current, { y: 300, opacity: 0 });
+      tl.from(thirdColumn.current, { y: 300, opacity: 0 });
     });
   });
+
   return (
     <section className="sm:hidden l:block p-[60px_0_80px]" name="houses">
       <div className="sm:max-w-[320px] sm2:max-w-[100%] sm:p-[0_15px] m-[0_auto] relative z-[2] l:max-w-[980px] xl:max-w-[1180px] xxl:max-w-[1380px]">

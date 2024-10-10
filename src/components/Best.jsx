@@ -12,42 +12,50 @@ import i3 from "/assets/img/best-3.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
+
 const Best = () => {
   const section = useRef();
   const firstCard = useRef();
   const secondCard = useRef();
   const thirdCard = useRef();
+  const firstPauseRef = useRef()
+  const secondPauseRef = useRef();
+  const thirdPauseRef = useRef();
+  const viewBtn = useRef()
+
 
   useGSAP(() => {
-    gsap.from(firstCard.current, {
-      y: 300,
-      opacity: 0,
-      duration: 0.8,
-      scrollTrigger: {
-        trigger: firstCard.current
-      },
-    });
-    gsap.from(secondCard.current, {
-      y: 200,
-      opacity: 0,
-      duration: 0.8,
-      scrollTrigger: {
-        trigger: secondCard.current,
-      },
-    });
-    gsap.from(thirdCard.current, {
-      y: 300,
-      opacity: 0,
-      duration: 0.8,
-      scrollTrigger: {
-        trigger: thirdCard.current,
-      },
-    });
-  });
+    let mm = gsap.matchMedia()
+
+    mm.add("(min-width:992px)", () => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section.current,
+          start: "top 40px",
+          end: "+=4000",
+          scrub: 2,
+          pin: true,
+        },
+      });
+
+      tl.from(firstCard.current, { y: 800 });
+      tl.from(firstPauseRef.current, { y: 1000 });
+      tl.from(secondCard.current, { y: 800 });
+      tl.from(secondPauseRef.current, { y: 1000 });
+      tl.from(thirdCard.current, { y: 800 });
+      tl.from(thirdPauseRef.current, { y: 1000 });
+    })
+  })
 
   return (
-    <section ref={section} className="p-[40px_0_60px]" name="properties">
-      <div className="sm:max-w-[320px] sm2:max-w-[100%] sm:p-[0_15px] m-[0_auto] l:max-w-[980px] xl:max-w-[1180px] xxl:max-w-[1380px]">
+    <section
+      ref={section}
+      className="p-[40px_0_60px]"
+      name="properties"
+    >
+      <div
+        className="sm:max-w-[320px] sm2:max-w-[100%] sm:p-[0_15px] m-[0_auto] l:max-w-[980px] xl:max-w-[1180px] xxl:max-w-[1380px]"
+      >
         <div className="flex gap-[10px] items-end sm:mb-[35px] l:mb-[0px] l:relative l:h-[100%] l:w-[100%]">
           <h2 className="text-[#fff] sm:text-[25px] md:text-[30px] md2:text-[35px] sm:leading-[110%] l:absolute l:top-[0px] l:left-[0px] l:w-[100%] l:h-[100%]">
             Best properties <br /> in{" "}
@@ -58,7 +66,7 @@ const Best = () => {
           </Link>
         </div>
         <div className="relative sm:flex sm:flex-col sm:gap-[60px] l:gap-[0px]">
-          <div className="sm:flex sm:flex-col sm:gap-[30px] md:flex-row md:gap-[10px] l:h-[553px] xl:justify-between">
+          <div className="sm:flex sm:flex-col sm:gap-[30px] md:flex-row md:gap-[10px] l:h-[553px] xl:justify-between relative">
             <div className="relative l:flex l:self-end" ref={firstCard}>
               <div className="relative md:h-[100%] l:h-[auto] [overflow:hidden] rounded-[30px]">
                 <img
@@ -71,6 +79,7 @@ const Best = () => {
                 </p>
               </div>
             </div>
+            <div ref={firstPauseRef}></div>
             <div
               className="relative l:flex l:self-center xxl:pb-[40px]"
               ref={secondCard}
@@ -86,6 +95,7 @@ const Best = () => {
                 </p>
               </div>
             </div>
+            <div ref={secondPauseRef}></div>
             <div className="relative l:flex l:self-end" ref={thirdCard}>
               <div className="relative md:h-[100%] l:h-[auto] [overflow:hidden] rounded-[30px]">
                 <img
@@ -98,15 +108,16 @@ const Best = () => {
                 </p>
               </div>
             </div>
+            <div ref={thirdPauseRef}></div>
           </div>
           <Link
             to="/"
             className="bg-[#FFE500] sm:flex sm:gap-[10px]
              sm:text-[16px] uppercase font-[900] p-[10px_30px] sm:rounded-[20px]
-             sm:self-center l:mt-[-40px] button"
+             sm:self-center l:mt-[-40px] button z-10"
+            ref={viewBtn}
           >
             View properties
-            {/* <img src={arrowRight} alt="->" /> */}
             <svg
               width="19"
               height="17"

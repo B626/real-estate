@@ -9,7 +9,6 @@ import {
   animateScroll as scroll,
   scrollSpy,
 } from "react-scroll";
-import SplitType from "../libs/split-type";
 
 import arrow from "/assets/img/icons/arrow-up-right.svg";
 import arrowDown from "/assets/img/icons/arrow-down.svg";
@@ -26,11 +25,6 @@ const Hero = () => {
   const cards = useRef()
   const introSection = useRef()
   const background = useRef()
-  const secTitle = useRef()
-  const secSub = useRef()
-
-  const text = SplitType.create("#secTitle");
-    console.log(text.chars)
 
   useEffect(() => {
     // Registering the 'begin' event and logging it to the console when triggered.
@@ -52,16 +46,20 @@ const Hero = () => {
       Events.scrollEvent.remove("end");
     };
   }, []);
-  
 
   const handleScrollDown = () => {};
 
   useGSAP(() => {
-    gsap.from(firstTitle.current, {x: 1500})
-    gsap.from(secondTitle.current, { x: 1500, delay: 0.5 });
-    gsap.from(thirdTitle.current, { x: 1500, delay: 1 });
-    gsap.from(cards.current, {opacity: 0, delay: 1.5});
-    gsap.fromTo(background.current, {opacity: 0}, {opacity: 1, delay: 2})
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: introSection.current,
+      }
+    })
+    tl.from(firstTitle.current, { x: 1500 });
+    tl.from(secondTitle.current, { x: 1500 });
+    tl.from(thirdTitle.current, { x: 1500 });
+    tl.from(cards.current, { opacity: 0 });
+    tl.fromTo(background.current, { opacity: 0 }, { opacity: 1 });
   })
 
   return (
